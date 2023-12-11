@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Usuários</h1>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <%for(let i = 0; i < usuario.length; i++){%>
+                <tr>
+                    <td><%=usuario[i].nome%></td>
+                    <td><%=usuario[i].email%></td>
+                    <td><a href="/editar/<%=usuario[i].id%>"><button>Editar</button></a>
+                    <a href="/excluirUsuario/<%=usuario[i].id%>"><button>Excluir</button></td>
+                </tr>
+            <%}%>
+        </tr>
+        
+    </table>
+</body>
+</html>

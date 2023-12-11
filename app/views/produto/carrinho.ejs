@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <table>
+            <tr>
+                <th>Produto</th>
+                <th>Preço Unitário</th>
+                <th>Quantidade</th>
+                <th></th>
+            </tr>
+    
+            <tr>
+                <%for(let i = 0; i < produtos.length; i++){%>
+                    <tr>
+                        <td><%=produtos[i].descricao%></td>
+                        <td>R$ <%=produtos[i].preco%></td>
+                        <td> 
+                            <input id="teste" type="number" value="<%=carrinho[i].quantidade%>"> 
+                        </td>
+                        
+                        <td>
+                            <form action="/carrinho/removerItemCarrinho" method="post">
+                                <input type="hidden" name="idProduto" value="<%=produtos[i].id%>">
+                                <button>Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                <%}%>
+            </tr>
+            
+        </table>
+        <p>Valor Total: R$ <%=valorTotal%></p>        
+
+        <form action="/carrinho/finalizarPedido" method="post">
+            
+            <ul>
+                <%for(let i = 0; i < formaPagamento.length; i++){%>
+                    <li>
+                        <input type="radio" name="formaPagamento" id="<%=formaPagamento[i].id%>" value=<%=formaPagamento[i].id%>>
+                        <label for="<%=formaPagamento[i].id%>"><%=formaPagamento[i].descricao%></label>
+                    </li>
+                <%}%>
+            </ul>
+                    
+            <button>Finalizar Compra</button>
+        </form>
+        
+    </main>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+</head>
+<body>
+    
+    <table>
+        <tr>
+            <th>Produto</th>
+            <th>Preço Unitário</th>
+            <th>Quantidade</th>
+            <th></th>
+        </tr>
+        
+        <tr>
+            <%for(let i = 0; i < produtos.length; i++){%>
+                <tr>
+                    <td><%=produtos[i].descricao%></td>
+                    <td>R$ <%=produtos[i].preco%></td>
+                    <td> 
+                        <%=carrinho[i].quantidade%>
+                    </td>
+                </tr>
+            <%}%>
+        </tr>
+    </table>
+
+    <p>Valor Total: R$ <%=valorTotal%></p>
+
+    <p>Forma de Pagamento: <%=formaPagamento[0].descricao%></p>
+        
+    <form action="/produto/confirmacaoPedido" method="post">
+        <input type="hidden" name="confirmarPedido" value="<%=carrinho[0].id_pedido%>">
+        <button type="submit">Confirmar Pedido</button>  
+    </form>
+
+    <form action="/produto/cancelamentoPedido" method="post">
+        <input type="hidden" name="cancelarPedido" value="<%=carrinho[0].id_pedido%>">
+        <button type="submit">Cancelar Pedido</button>
+    </form>
+</body>
+</html>

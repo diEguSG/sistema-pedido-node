@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Produtos</h1>
+
+    <table>
+        <tr>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <%for(let i = 0; i < produto.length; i++){%>
+                <tr>
+                    <td><%=produto[i].descricao%></td>
+                    <td>R$ <%=produto[i].preco%></td>
+                    <th><a href="/edicaoProduto/<%=produto[i].id%>"><button>Editar</button></a>
+                        <a href="/excluirProduto/<%=produto[i].id%>"><button>Excluir</button></a></th>
+                </tr>
+            <%}%>
+        </tr>
+    </table>
+</body>
+</html>

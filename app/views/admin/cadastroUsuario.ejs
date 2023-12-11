@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Usuario</title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    
+    <%if(erros){%>
+        <ul>
+            <%for(let i = 0; i < erros.length; i++){%>
+                <li><%=erros[i].msg%></li>
+            <%}%>
+        </ul>
+    <%}%>    
+
+    <%if(erro){%>
+        <ul>
+            <%for(let i = 0; i < erro.length; i++){%>
+                <li><%=erro[i].msg%></li>
+            <%}%>
+        </ul>
+    <%}%>
+
+
+    <form action="/admin/cadastrarUsuario" method="post">
+        
+        <label for="input-nome">Nome</label>
+        <input type="text" name="nome" id="input-nome" value="<%=usuario.nome%>">
+        <br>
+        <br>
+    
+        <label for="input-email">E-mail</label>
+        <input type="email" name="email" id="input-email" value="<%=usuario.email%>">
+        <br>
+        <br>
+
+        <label for="select-tipoUsuario">Tipo de Usuário</label> 
+        <select name="id_tipo_usuario" id="select-tipoUsuario">
+            <option value="0">Selecione</option>
+            <%for(let i = 0; i < tipoUsuario.length; i++){%>
+                <option value="<%=[tipoUsuario[i].id]%>"><%=tipoUsuario[i].descricao%></option>
+            <%}%>
+        </select>
+        <br>
+        <br>
+    
+        <label for="input-senha">Senha</label>
+        <input type="password" name="senha" id="input-senha" value="<%=usuario.senha%>">
+        <br>
+        <br>
+    
+        <label for="input-confirmaSenha">Confirmar Senha</label>
+        <input type="password" name="confirmaSenha" id="input-confirmaSenha" value="<%=usuario.confirmaSenha%>">
+        <br>
+        <br>
+    
+        <button type="submit">Entrar</button>
+
+    </form>
+</body>
+</html>

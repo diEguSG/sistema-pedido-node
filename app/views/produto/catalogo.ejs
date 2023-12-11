@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Itens</title>
+</head>
+<body>
+    
+    <main>
+        <h1>Catálogo de Itens</h1>
+
+        <%if (idPedido != 0){%>
+            <a href="/carrinho">Carrinho</a>
+        <%}%>
+
+        <table>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <%for(let i = 0; i < produtos.length; i++){%>
+                    <tr>
+                        <td><%=produtos[i].descricao%></td>
+                        <td>R$ <%=produtos[i].preco%></td>
+                        <td>
+                            <form action="/produto/adicionarCarrinho" method="post">
+                                <input type="hidden" name="idProduto" value="<%=produtos[i].id%>">
+                                <button type="submit">Adicionar ao Carrinho</button>
+                            </form>
+                        </td>
+                    </tr>
+                <%}%>
+            </tr>
+            
+        </table>
+    </main>
+    
+    
+</body>
+</html>

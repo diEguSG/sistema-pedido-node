@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/admin/editarUsuario" method="post">
+
+        <%if(erros){%>
+            <ul>
+                <%for(let i = 0; i < erros.length; i++){%>
+                    <li><%=erros[i].msg%></li>
+                <%}%>
+            </ul>
+        <%}%>
+
+        
+        <label for="input-nome">Nome</label>
+        <input type="text" name="nome" id="input-nome" value="<%=usuario[0].nome%>">
+        <br>
+        <br>
+    
+        <label for="input-email">E-mail</label>
+        <input type="email" name="email" id="input-email" value="<%=usuario[0].email%>">
+        <br>
+        <br>
+
+        <label for="select-tipoUsuario">Tipo de Usuário</label> 
+        <select name="id_tipo_usuario" id="select-tipoUsuario">
+            <%for(let i = 0; i < tipoUsuario.length; i++){%>
+                <%if (usuario[0].id_tipo_usuario == 1){%>
+                    <option value="<%=tipoUsuario[i].id%>"><%=tipoUsuario[i].descricao%></option>
+                <%}else{%>
+                    <option value="<%=tipoUsuario[i].id%>" selected><%=tipoUsuario[i].descricao%></option>
+                <%}%>
+            <%}%>
+        </select>
+        <br>
+        <br>
+
+        <label for="input-senha">Senha</label>
+                <input type="password" name="senha" id="input-senha" value="">
+                <br>
+                <br>
+            
+                <label for="input-confirmaSenha">Confirmar Senha</label>
+                <input type="password" name="confirmaSenha" id="input-confirmaSenha" value="">
+                <br>
+                <br>
+
+        <!-- <button type="button" id="btn-alterarSenha">Alterar Senha</button> -->
+
+        <input type="hidden" name="idUsuario" value="<%=usuario[0].id%>">
+
+        <button type="submit">Salvar</button>
+
+    </form>
+
+    <!-- <script>
+        const btnAlterarSenha = document.querySelector("#btn-alterarSenha");
+
+        let estadoModal = false;
+
+        console.log(btnAlterarSenha);
+
+        btnAlterarSenha.addEventListener('click', ()=>{
+            const modalSenha = document.querySelector("#modalSenha");
+
+            modalSenha.insertAdjacentHTML('beforeend', `
+                <label for="input-senha">Senha</label>
+                <input type="password" name="senha" id="input-senha" value="">
+                <br>
+                <br>
+            
+                <label for="input-confirmaSenha">Confirmar Senha</label>
+                <input type="password" name="confirmaSenha" id="input-confirmaSenha" value="">
+                <br>
+                <br>
+            `)
+        })
+    </script> -->
+</body>
+</html>

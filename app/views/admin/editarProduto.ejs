@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastrar Produto</h1>
+
+    <%if(erros){%>
+        <ul>
+            <%for(let i = 0; i < erros.length; i++){%>
+                <li><%=erros[i].msg%></li>
+            <%}%>
+        </ul>
+    <%}%>   
+
+    <form action="/admin/editarProduto" method="post">
+        
+        <label for="input-descricao">Nome</label>
+        <input type="text" name="descricao" id="input-descricao" value="<%=produto[0].descricao%>">
+        <br>
+        <br>
+    
+        <label for="input-preco">E-mail</label>
+        <input type="number" name="preco" id="input-preco" value="<%=produto[0].preco%>">
+        <br>
+        <br>
+
+        <input type="hidden" name="idProduto" value="<%=produto[0].id%>">
+    
+        <button type="submit">Cadastrar</button>
+
+    </form>
+</body>
+</html>

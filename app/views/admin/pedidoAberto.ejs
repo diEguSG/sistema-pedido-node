@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+</head>
+<body>
+    <h1>Pedidos</h1>
+
+    
+
+    <table>
+        <tr>
+            <th>Nº do Pedido</th>
+            <th>Forma de Pagamento</th>
+            <th>Usúario</th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <%for(let i = 0; i < pedido.length; i++){%>
+                <tr>
+                    <td><%=pedido[i].id%></td>
+                    <td><%=pedido[i].descricao%></td>
+                    <td><%=pedido[i].nome%></td>
+                    <td><button><a href="/verificarCarrinho/<%=pedido[i].id%>/<%=pedido[i].id_forma_pagamento%>">Carrinho</a></button></td>
+                </tr>
+                
+            <%}%>
+        </tr>
+    </table>
+</body>
+</html>
