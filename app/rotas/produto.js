@@ -5,12 +5,20 @@ module.exports = function (app){
         app.app.controllers.produto.catalogo(app, req, res);
     })
 
-    app.post('/produto/adicionarCarrinho', function(req, res){
+    app.get('/produto/adicionarCarrinho/:idProduto', function(req, res){
         app.app.controllers.produto.adicionarCarrinho(app, req, res);
     })
 
     app.get('/carrinho', function(req, res){
         app.app.controllers.produto.listarItemCarrinho(app, req, res);
+    })
+
+    app.get('/produto/adicionarQuantidadeItem/:idProduto', function(req, res){
+        app.app.controllers.produto.adicionarQuantidadeItem(app, req, res);
+    })
+
+    app.get('/produto/removerQuantidadeItem/:idProduto', function(req, res){
+        app.app.controllers.produto.removerQuantidadeItem(app, req, res);
     })
 
     app.post('/carrinho/removerItemCarrinho', function(req, res){

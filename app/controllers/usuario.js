@@ -195,16 +195,17 @@ module.exports.sair = function (app, req, res){
     const connection = app.config.connection;
     const modelPedido = new app.app.models.modelPedido(connection);
 
-    if(req.session.id_pedido != 0){
-        
-        let confirmacao = window.confirm("Você deseja sair? Seu pedido em Aberto será cancelado!");
-
-        if(confirmacao){
-            modelPedido.cancelarPedido(req.session.id_pedido, function(error, result){
-                req.session.destroy(function(error){                        //Destroi a sessão
-                    res.redirect('/telaLogin');
-                }); 
-            })
-        }
+    if(req.session.id_pedido != 0){  
+        modelPedido.cancelarPedido(req.session.id_pedido, function(error, result){
+            req.session.destroy(function(error){                        //Destroi a sessão
+                res.redirect('/telaLogin');
+            }); 
+        })
+    
+    }
+    else{
+        req.session.destroy(function(error){
+            res.redirect('/telaLogin');
+        }); 
     }
 }

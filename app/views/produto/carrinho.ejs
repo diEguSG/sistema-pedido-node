@@ -20,10 +20,13 @@
                     <tr>
                         <td><%=produtos[i].descricao%></td>
                         <td>R$ <%=produtos[i].preco%></td>
+          
                         <td> 
-                            <input id="teste" type="number" value="<%=carrinho[i].quantidade%>"> 
+                            <a href="/produto/removerQuantidadeItem/<%=produtos[i].id%>">-</a>
+                            <label><%=carrinho[i].quantidade%></label>
+                            <a href="/produto/adicionarQuantidadeItem/<%=produtos[i].id%>">+</a>
                         </td>
-                        
+                          
                         <td>
                             <form action="/carrinho/removerItemCarrinho" method="post">
                                 <input type="hidden" name="idProduto" value="<%=produtos[i].id%>">

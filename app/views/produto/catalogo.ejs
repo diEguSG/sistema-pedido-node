@@ -27,10 +27,7 @@
                         <td><%=produtos[i].descricao%></td>
                         <td>R$ <%=produtos[i].preco%></td>
                         <td>
-                            <form action="/produto/adicionarCarrinho" method="post">
-                                <input type="hidden" name="idProduto" value="<%=produtos[i].id%>">
-                                <button type="submit">Adicionar ao Carrinho</button>
-                            </form>
+                            <button><a href="/produto/adicionarCarrinho/<%=produtos[i].id%>">Adicionar no Carrinho</a></button>
                         </td>
                     </tr>
                 <%}%>

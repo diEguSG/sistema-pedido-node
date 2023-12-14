@@ -36,11 +36,6 @@
         <input type="hidden" name="confirmarPedido" value="<%=carrinho[0].id_pedido%>">
         <button type="submit">Confirmar Pedido</button>  
     </form>
-
-    <form action="/produto/cancelamentoPedido" method="post">
-        <input type="hidden" name="cancelarPedido" value="<%=carrinho[0].id_pedido%>">
-        <button type="submit">Cancelar Pedido</button>
-    </form>
     
     <a href="/carrinho"><button>Voltar</button></a>
 
