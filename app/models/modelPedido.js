@@ -54,6 +54,14 @@ Pedido.prototype.carregarPedidosAbertos = function(callback){
     this._connection.query("select pedido.id,usuario.nome,forma_pagamento.descricao,pedido.id_forma_pagamento from pedido as pedido inner join usuario as usuario on pedido.id_usuario = usuario.id inner join forma_pagamento as forma_pagamento on pedido.id_forma_pagamento = forma_pagamento.id where pedido.id_status = 1;", callback);
 }
 
+Pedido.prototype.carregarPedidos = function(callback){
+    this._connection.query("select * from pedido;", callback);
+}
+
+Pedido.prototype.carregarStatus = function(idStatus, callback){
+    this._connection.query(`select * from status where id = ${idStatus};`, callback);
+}
+
 
 module.exports = function(){
     return Pedido;

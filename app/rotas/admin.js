@@ -62,11 +62,15 @@ module.exports = function(app){
 
     //Lista Pedidos em Abertos
     app.get('/pedidoAberto', function(req, res){
-        app.app.controllers.admin.listarPedidos(app, req, res);
+        app.app.controllers.admin.listarPedidosAbertos(app, req, res);
     })
 
     //Carregar Carrinho
     app.get('/verificarCarrinho/:idPedido/:idFormaPagamento', function(req, res){
         app.app.controllers.admin.listarCarrinho(app, req, res);
+    })
+
+    app.get('/historicoPedidos', function(req, res){
+        app.app.controllers.admin.carregarPedidos(app, req, res);
     })
 }

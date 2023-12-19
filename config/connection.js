@@ -6,7 +6,7 @@ const connection = function (){
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'sistemaPedido',
+        database: 'sistema_pedido',
     }
     )
 }

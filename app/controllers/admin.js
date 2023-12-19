@@ -295,7 +295,7 @@ module.exports.excluirProduto = function(app, req, res){
     })
 }
 
-module.exports.listarPedidos = function(app, req, res){
+module.exports.listarPedidosAbertos = function(app, req, res){
     if(req.session.id_tipo_usuario != 2){
         res.redirect('/telaLogin');
         return;
@@ -335,7 +335,46 @@ module.exports.listarCarrinho = function(app, req, res){
         }
 
         modelPedido.carregarFormaPagamento(idFormaPagamento, function(error, metodoPagamento){    
-            res.render('admin/pedido', {produtos: produto, carrinho: carrinho, valorTotal:valorFinal, formaPagamento: metodoPagamento})
+            res.render('admin/infoPedido', {produtos: produto, carrinho: carrinho, valorTotal:valorFinal, formaPagamento: metodoPagamento})
         })
     })
+}
+
+module.exports.carregarPedidos = function(app, req, res){
+
+    if(req.session.id_tipo_usuario != 2){
+        res.redirect('/telaLogin');
+        return;
+    }
+
+    const connection = app.config.connection;
+    const modelPedido = new app.app.models.modelPedido(connection);
+    const modelUsuario = new app.app.models.modelUsuario(connection);
+
+    const pedido = []
+
+    modelPedido.carregarPedidos(function(error, pedidos){
+
+        for(let i = 0; i < pedidos.length; i++){
+            modelUsuario.carregarUsuario(pedidos[i].id_usuario, function(error, usuario){
+                modelPedido.carregarStatus(pedidos[i].id_status, function(error, status){
+                    modelPedido.carregarFormaPagamento(pedidos[i].id_forma_pagamento, function(error, formaPagamento){
+                        pedido.push({
+                            id: pedidos[i].id,
+                            usuario: usuario[0].nome,
+                            status: status[0].descricao,
+                            formaPagamento: formaPagamento[0].descricao
+                        })   
+                        
+                        if(i == pedidos.length -1){
+                            console.log(pedido);
+                            res.render('admin/historicoPedidos', {pedido: pedido});
+                        }
+                    })
+                })
+            })   
+        }
+    })
+
+    
 }
