@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="/css/cadastro.css" type="text/css">
 </head>
 <body>
-    <h1>Cadastro</h1>
-
+    
+    <main>
         <%if(erros){%>
             <ul>
                 <%for(let i = 0; i < erros.length; i++){%>
@@ -24,33 +25,28 @@
             </ul>
         <%}%>    
     
-    <form action="/usuario/cadastrar" method="post">
-        
-        <label for="input-nome">Nome</label>
-        <input type="text" name="nome" id="input-nome" value="<%=usuario.nome%>">
-        <br>
-        <br>
-    
-        <label for="input-email">E-mail</label>
-        <input type="email" name="email" id="input-email" value="<%=usuario.email%>">
-        <br>
-        <br>
-    
-        <label for="input-senha">Senha</label>
-        <input type="password" name="senha" id="input-senha" value="<%=usuario.senha%>">
-        <br>
-        <br>
-    
-        <label for="input-confirmaSenha">Confirmar Senha</label>
-        <input type="password" name="confirmaSenha" id="input-confirmaSenha" value="<%=usuario.confirmaSenha%>">
-        <br>
-        <br>
-    
-        <input type="hidden" name="tipoUsuario" value="1">
-    
-        <button type="submit">Entrar</button>
+        <form action="/usuario/cadastrar" method="post">
+            
+            <div id="div-inputs">
+                <input type="text" name="nome" id="input-nome" value="<%=usuario.nome%>" placeholder="Nome">
+                    
+                <input type="email" name="email" id="input-email" value="<%=usuario.email%>" placeholder="E-mail">
+                        
+                <input type="password" name="senha" id="input-senha" value="<%=usuario.senha%>" placeholder="Senha">
+                
+                <input type="password" name="confirmaSenha" id="input-confirmaSenha" value="<%=usuario.confirmaSenha%>" placeholder="Confirmar Senha">
+                
+                <input type="hidden" name="tipoUsuario" value="1">
+            </div>
 
-    </form>
-    
+            <div id="info-cad">
+                <p>Já possui um cadastro?</p>
+                <a href="/telaLogin">Voltar</a>
+            </div>
+
+            <button type="submit">Cadastrar-se</button>
+
+        </form>
+    </main>
 </body>
 </html>

@@ -4,37 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
 </head>
 <body>
-    <h1>Login</h1>
+    
+    <main>
+        <%if(erros){%>
+            <ul>
+                <%for(let i = 0; i < erros.length; i++){%>
+                    <li><%=erros[i].msg%></li>
+                <%}%>
+            </ul>
+        <%}%>
 
-    <%if(erros){%>
-        <ul>
-            <%for(let i = 0; i < erros.length; i++){%>
-                <li><%=erros[i].msg%></li>
-            <%}%>
-        </ul>
-    <%}%>
+        <form action="/usuario/logar" method="post">
 
-    <form action="/usuario/logar" method="post">
+            <div id="div-inputs">
+                <input type="text" name="usuario" id="input-usuario" value="<%=usuario.usuario%>" placeholder="E-mail">
+                <input type="password" name="senha" id="input-senha" placeholder="Senha">
+            </div>
+        
+            <div id="info-cad">
+                <p>Não possui um cadastro?</p>
+                <a href="./cadastro">Cadastrar-se</a>
+            </div>
+            
 
-        <label for="input-usuario">Usuario</label>
-        <input type="text" name="usuario" id="input-usuario" value="<%=usuario.usuario%>">
-        <br>
-        <br>
+            <button type="submit">Entrar</button>
 
-        <label for="input-senha">Senha</label>
-        <input type="password" name="senha" id="input-senha">
-        <br>
-        <br>
-
-        <a href="./cadastro">Cadastrar-se</a>
-        <br>
-
-        <button type="submit">Entrar</button>
-
-    </form>
-
+        </form>
+    </main>
     
 </body>
 </html>

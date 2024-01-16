@@ -367,7 +367,6 @@ module.exports.carregarPedidos = function(app, req, res){
                         })   
                         
                         if(i == pedidos.length -1){
-                            console.log(pedido);
                             res.render('admin/historicoPedidos', {pedido: pedido});
                         }
                     })

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/alteracaoCadastro.css" type="text/css">
 </head>
 <body>
 
@@ -15,25 +16,23 @@
         </ul>
     <%}%>   
 
-    <form action="/usuario/alterar" method="post">
+    <main>
+        <form action="/usuario/alterar" method="post">
         
-        <label for="input-nome">Nome</label>
-        <input type="text" name="nome" id="input-nome" value="<%=usuario[0].nome%>">
-        <br>
-        <br>
-    
-        <label for="input-email">E-mail</label>
-        <input type="email" name="email" id="input-email" value="<%=usuario[0].email%>">
-        <br>
-        <br>        
-    
-        <input type="hidden" name="id_tipo_usuario" value="1">
-        <input type="hidden" name="idUsuario" value="<%=usuario[0].id%>">
-    
-        <button type="submit">Salvar</button>
 
-    </form>
+            <div id="div-inputs">
+                <input type="text" name="nome" id="input-nome" value="<%=usuario[0].nome%>" placeholder="Nome">
+                <input type="email" name="email" id="input-email" value="<%=usuario[0].email%>" placeholder="E-mail">
+            </div>
 
-    <a href="../alteracaoSenha/<%=usuario[0].id%>"><button>Nova Senha</button></a>
+            <input type="hidden" name="id_tipo_usuario" value="1">
+            <input type="hidden" name="idUsuario" value="<%=usuario[0].id%>">
+
+            <button type="submit">Salvar</button>
+            <a href="../alteracaoSenha/<%=usuario[0].id%>">Nova Senha</a>
+        </form>
+    </main>
+
+    
 </body>
 </html>
