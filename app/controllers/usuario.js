@@ -8,12 +8,12 @@ module.exports.logar = function (app, req, res){
 
     req.assert('usuario', 'Preencher campo usuário!').notEmpty();
     req.assert('senha', 'Preencher campo Senha!').notEmpty();
-    req.assert('senha', 'Senha deve conter no mínimo 7 digitos').len(7, 999);
 
     const erros = req.validationErrors();
 
     if(erros){
         res.render('usuario/telaLogin', {erros: erros, usuario: dados})
+        return erros;
     }
 
     const connection = app.config.connection;
@@ -107,8 +107,8 @@ module.exports.alterarCadastro = function(app, req, res){
 
     const dados = req.body;
 
-    req.assert('nome', 'Preencher campo nome!').notEmpty();
-    req.assert('email', 'Campo vazio!').notEmpty();
+    req.assert('nome', 'Favor, inserir o Nome!').notEmpty();
+    req.assert('email', 'Favor, inserir e-mail!').notEmpty();
 
     const erros = req.validationErrors();
     
@@ -195,8 +195,12 @@ module.exports.sair = function (app, req, res){
     const connection = app.config.connection;
     const modelPedido = new app.app.models.modelPedido(connection);
 
-    if(req.session.id_pedido != 0){  
+    console.log(req.session.id_pedido)
+
+    if(req.session.id_pedido != 0){ 
+        console.log(req.session.id_pedido)
         modelPedido.cancelarPedido(req.session.id_pedido, function(error, result){
+            console.log(req.session.id_pedido)
             req.session.destroy(function(error){                        //Destroi a sessão
                 res.redirect('/telaLogin');
             }); 

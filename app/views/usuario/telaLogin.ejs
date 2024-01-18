@@ -9,13 +9,6 @@
 <body>
     
     <main>
-        <%if(erros){%>
-            <ul>
-                <%for(let i = 0; i < erros.length; i++){%>
-                    <li><%=erros[i].msg%></li>
-                <%}%>
-            </ul>
-        <%}%>
 
         <form action="/usuario/logar" method="post">
 
@@ -24,10 +17,19 @@
                 <input type="password" name="senha" id="input-senha" placeholder="Senha">
             </div>
         
+            <%if(erros){%>
+                <ul>
+                    <%for(let i = 0; i < erros.length; i++){%>
+                        <li><%=erros[i].msg%></li>
+                    <%}%>
+                </ul>
+            <%}%>
+
             <div id="info-cad">
                 <p>Não possui um cadastro?</p>
                 <a href="./cadastro">Cadastrar-se</a>
             </div>
+            
             
 
             <button type="submit">Entrar</button>

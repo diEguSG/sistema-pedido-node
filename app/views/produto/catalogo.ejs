@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="/css/catalogo.css" type="text/css">
 </head>
 <body>
+
+    <header>
+        <nav>
+            <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/152/152534.png" alt=""></a>
+            
+            <%if (idPedido != 0){%>
+                <a href="/carrinho"><img src="https://cdn-icons-png.flaticon.com/512/5087/5087784.png" alt="Carrinho" id="img-carrinho"></a>
+            <%}%>
+        </nav>
+    </header>
     
     <main>
         <h1>Catálogo de Itens</h1>
 
-        <%if (idPedido != 0){%>
-            <a href="/carrinho">Carrinho</a>
-        <%}%>
+        
 
         <table>
             <tr>

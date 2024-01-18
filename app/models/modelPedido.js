@@ -6,6 +6,10 @@ Pedido.prototype.verificarIdPedido = function(callback){
     this._connection.query('select * from pedido order by id desc limit 1;', callback);
 }
 
+Pedido.prototype.verificarPedidoNovaSessao = function(idUsuario, callback){
+    this._connection.query(`select * from pedido where id_status = 1 AND id_usuario = ${idUsuario};`, callback);
+}
+
 Pedido.prototype.criarPedido = function(dados, callback){
     this._connection.query(`insert into pedido(id_usuario, id_status) values ('${dados[0].id_usuario}', '${dados[0].id_status}');`, callback);
 }
@@ -23,7 +27,7 @@ Pedido.prototype.carregarCarrinho = function(idPedido, callback){
 }
 
 Pedido.prototype.cancelarPedido = function(idPedido, callback){
-    this._connection.query(`update pedido set id_status = 3 where id_pedido = ${idPedido};`, callback);
+    this._connection.query(`update pedido set id_status = 3 where id = ${idPedido};`, callback);
 }
 
 Pedido.prototype.atualizarItemCarrinho = function(dados, quantidade, callback){
@@ -39,7 +43,13 @@ Pedido.prototype.carregarFormasPagamentos = function(callback){
 }
 
 Pedido.prototype.carregarFormaPagamento = function(idFormaPagamento, callback){
-    this._connection.query(`select * from forma_pagamento where id = ${idFormaPagamento};`, callback);
+
+    if(idFormaPagamento == null){
+        this._connection.query(`select * from pedido where id_forma_pagamento is null;`, callback);
+    }
+    else if(idFormaPagamento != null){
+        this._connection.query(`select * from forma_pagamento where id = ${idFormaPagamento};`, callback);
+    }
 }
 
 Pedido.prototype.atualizarFormaPagamentoPedido = function(idFormaPagamento, idPedido, callback){

@@ -4,6 +4,22 @@
     box-sizing: border-box;
 }
 
+header{
+    background-color: rgb(78, 78, 78);
+    height: 35px;
+}
+
+img{
+    filter: invert(1);
+    height: 35px;
+    width: 35px;
+    border-radius: 3px;
+}
+
+img:hover{
+    background-color: #2bf8f8;
+}
+
 p{
     margin-top: 10px;
     font-weight: 600;
@@ -26,6 +42,7 @@ th{
     border-style: solid;
     border-width: 2px;
     border-color: #ffff;
+    border-radius: 5px;
 }
 
 td{
@@ -34,6 +51,7 @@ td{
     border-style: solid;
     border-width: 2px;
     border-color: #ffff;
+    border-radius: 5px;
     
     button{
         margin: 0;

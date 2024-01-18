@@ -359,12 +359,13 @@ module.exports.carregarPedidos = function(app, req, res){
             modelUsuario.carregarUsuario(pedidos[i].id_usuario, function(error, usuario){
                 modelPedido.carregarStatus(pedidos[i].id_status, function(error, status){
                     modelPedido.carregarFormaPagamento(pedidos[i].id_forma_pagamento, function(error, formaPagamento){
+
                         pedido.push({
                             id: pedidos[i].id,
                             usuario: usuario[0].nome,
                             status: status[0].descricao,
                             formaPagamento: formaPagamento[0].descricao
-                        })   
+                        }) 
                         
                         if(i == pedidos.length -1){
                             res.render('admin/historicoPedidos', {pedido: pedido});

@@ -296,7 +296,6 @@ module.exports.confirmarPedido = function(app, req, res){
                 res.render('admin/pedidoAberto', {pedido: pedidoAberto});
             })
         }
-        
     })
 }
 

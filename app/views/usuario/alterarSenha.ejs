@@ -8,22 +8,27 @@
 </head>
 <body>
 
-    <%if(erros){%>
-        <ul>
-            <%for(let i = 0; i < erros.length; i++){%>
-                <li><%=erros[i].msg%></li>
-            <%}%>
-        </ul>
-    <%}%>   
+    <header>
+        <nav>
+            <a href="/alteracaoCadastro/<%=idUsuario%>"><img src="https://cdn-icons-png.flaticon.com/512/152/152534.png" alt="Catalogo"></a>
+        </nav>
+    </header>
 
     <main>
         <form action="/usuario/alterarSenha" method="post">
-
-            
+ 
             <div id="div-inputs">
                 <input type="password" name="senha" id="input-senha" placeholder="Senha">
                 <input type="password" name="confirmaSenha" id="input-confirmaSenha" placeholder="Confirmar Senha">
             </div>
+
+            <%if(erros){%>
+                <ul>
+                    <%for(let i = 0; i < erros.length; i++){%>
+                        <li><%=erros[i].msg%></li>
+                    <%}%>
+                </ul>
+            <%}%>   
     
             <input type="hidden" name="idUsuario" value="<%=idUsuario%>">
         

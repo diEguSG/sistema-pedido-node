@@ -8,36 +8,42 @@
 </head>
 <body>
 
-    <table>
-        <tr>
-            <th>Produto</th>
-            <th>Preço Unitário</th>
-            <th>Quantidade</th>
-        </tr>
-        
-        <tr>
-            <%for(let i = 0; i < produtos.length; i++){%>
-                <tr>
-                    <td><%=produtos[i].descricao%></td>
-                    <td>R$ <%=produtos[i].preco%></td>
-                    <td> 
-                        <%=carrinho[i].quantidade%>
-                    </td>
-                </tr>
-            <%}%>
-        </tr>
-    </table>
+    <header>
+        <nav>
+            <a href="/carrinho"><img src="https://cdn-icons-png.flaticon.com/512/152/152534.png" alt="Carrinho"></a>
+        </nav>
+    </header>
 
-    <p>Valor Total: R$ <%=valorTotal%></p>
-
-    <p>Forma de Pagamento: <%=formaPagamento[0].descricao%></p>
+    <main>
+        <table>
+            <tr>
+                <th>Produto</th>
+                <th>Preço Unitário</th>
+                <th>Quantidade</th>
+            </tr>
         
-    <form action="/produto/confirmacaoPedido" method="post">
-        <input type="hidden" name="confirmarPedido" value="<%=carrinho[0].id_pedido%>">
-        <button type="submit">Confirmar Pedido</button>  
-    </form>
-    
-    <a href="/carrinho"><button>Voltar</button></a>
+            <tr>
+                <%for(let i = 0; i < produtos.length; i++){%>
+                    <tr>
+                        <td><%=produtos[i].descricao%></td>
+                        <td>R$ <%=produtos[i].preco%></td>
+                        <td>
+                            <%=carrinho[i].quantidade%>
+                        </td>
+                    </tr>
+                <%}%>
+            </tr>
+        </table>
+        <p>Valor Total: R$ <%=valorTotal%></p>
+        <p>Forma de Pagamento: <%=formaPagamento[0].descricao%></p>
+        
+        <form action="/produto/confirmacaoPedido" method="post">
+            <input type="hidden" name="confirmarPedido" value="<%=carrinho[0].id_pedido%>">
+            <button type="submit">Confirmar Pedido</button>
+        </form>
+        
+        <a href="/carrinho"><button>Voltar</button></a>
+    </main>
 
 </body>
 </html>

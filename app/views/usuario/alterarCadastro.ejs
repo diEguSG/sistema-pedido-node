@@ -6,24 +6,28 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/alteracaoCadastro.css" type="text/css">
 </head>
-<body>
+<body>   
 
-    <%if(erros){%>
-        <ul>
-            <%for(let i = 0; i < erros.length; i++){%>
-                <li><%=erros[i].msg%></li>
-            <%}%>
-        </ul>
-    <%}%>   
+    <header>
+        <nav>
+            <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/152/152534.png" alt="Catalogo"></a>
+        </nav>
+    </header>
 
     <main>
         <form action="/usuario/alterar" method="post">
-        
-
             <div id="div-inputs">
                 <input type="text" name="nome" id="input-nome" value="<%=usuario[0].nome%>" placeholder="Nome">
                 <input type="email" name="email" id="input-email" value="<%=usuario[0].email%>" placeholder="E-mail">
             </div>
+
+            <%if(erros){%>
+                <ul>
+                    <%for(let i = 0; i < erros.length; i++){%>
+                        <li><%=erros[i].msg%></li>
+                    <%}%>
+                </ul>
+            <%}%>
 
             <input type="hidden" name="id_tipo_usuario" value="1">
             <input type="hidden" name="idUsuario" value="<%=usuario[0].id%>">
