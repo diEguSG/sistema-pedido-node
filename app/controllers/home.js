@@ -11,10 +11,10 @@ module.exports.index = function (app, req, res){
     modelPedido.verificarPedidoNovaSessao(req.session.id_usuario, function(error, result){
         if(result.length > 0){
             modelPedido.cancelarPedido(result[0].id, function(error, result){
-                
+    
             })
         }
-        res.render('./home/index', {tipoUsuario: req.session.id_tipo_usuario, idUsuario: req.session.id_usuario, idPedido:req.session.id_pedido});
+        res.render('./home/index', {tipoUsuario: req.session.id_tipo_usuario, idUsuario: req.session.id_usuario});
     })
 
     
