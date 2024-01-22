@@ -38,7 +38,6 @@
         <p>Forma de Pagamento: <%=formaPagamento[0].descricao%></p>
         
         <form action="/produto/confirmacaoPedido" method="post">
-            <%=console.log(id_pedido)%>
             <input type="hidden" name="confirmarPedido" value="<%=carrinho[0].id_pedido%>">
             <button type="submit">Confirmar Pedido</button>
         </form>
