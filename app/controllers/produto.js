@@ -260,7 +260,7 @@ module.exports.finalizarPedido = function(app, req, res){
 
         modelPedido.carregarFormaPagamento(idFormaPagamento, function(error, metodoPagamento){
             modelPedido.atualizarFormaPagamentoPedido(idFormaPagamento, idPedido, function(error, result){
-                res.render('produto/confirmarPedido', {produtos: produto, carrinho: carrinho, valorTotal:valorFinal, formaPagamento: metodoPagamento})
+                res.render('produto/confirmarPedido', {produtos: produto, carrinho: carrinho, valorTotal:valorFinal, formaPagamento: metodoPagamento, id_pedido: idPedido})
             })
         })
     })

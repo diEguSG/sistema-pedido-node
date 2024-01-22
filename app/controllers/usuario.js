@@ -196,7 +196,6 @@ module.exports.sair = function (app, req, res){
     const modelPedido = new app.app.models.modelPedido(connection);
 
     if(req.session.id_pedido != 0){ 
-        console.log(req.session.id_pedido)
         modelPedido.cancelarPedido(req.session.id_pedido, function(error, result){       
             req.session.destroy(function(error){                        //Destroi a sessão
                 res.redirect('/telaLogin');

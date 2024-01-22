@@ -122,7 +122,6 @@ module.exports.editarUsuario = function(app, req, res){
 
     if(dados.senha.length || dados.confirmaSenha.length > 0){
 
-        console.log(dados);
         req.assert('senha', 'Senha deve conter no mínimo 7 digitos').len(7, 999);
         req.assert('confirmaSenha', 'Favor, confirme a sua senha!').notEmpty();
 
