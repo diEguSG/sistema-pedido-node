@@ -101,7 +101,7 @@ module.exports.listarItemCarrinho = function(app, req, res){
         }
 
         modelPedido.carregarFormasPagamentos(function(error, metodoPagamento){
-            res.render('produto/carrinho', {produtos: produto, carrinho: carrinho, valorTotal:valorFinal, formaPagamento: metodoPagamento})
+            res.render('produto/carrinho', {produtos: produto, carrinho: carrinho, valorTotal:valorFinal, formaPagamento: metodoPagamento, erros: {}})
         })
     })
 }
@@ -246,7 +246,7 @@ module.exports.finalizarPedido = function(app, req, res){
 
     const idPedido = req.session.id_pedido;
     const idFormaPagamento = req.body.formaPagamento;
-    
+
     modelPedido.carregarCarrinho(idPedido, async function(error, carrinho){
         
         let produto = [];
@@ -325,37 +325,3 @@ module.exports.cancelarPedido = function(app, req, res){
         }
     })
 }
-
-
-
-// function carrinho(app, req, res, link){
-//     if(req.session.id_tipo_usuario != 1){
-//         res.redirect('/telaLogin');
-//         return;
-//     }
-
-//     const connection = app.config.connection;
-//     const modelProduto = new app.app.models.modelProduto(connection);
-//     const modelPedido = new app.app.models.modelPedido(connection);
-
-//     const idPedido = req.session.id_pedido;
-//     const idFormaPagamento = req.body.formaPagamento;
-    
-//     modelPedido.carregarCarrinho(idPedido, async function(error, carrinho){
-        
-//         let produto = [];
-//         let valorFinal = 0;
-
-//         for(let i = 0; i < carrinho.length; i++){
-//             const carregarProduto = await modelProduto.carregarProduto(carrinho[i].id_produto);
-//             valorFinal += carrinho[i].quantidade * carregarProduto[0].preco
-//             produto.push(carregarProduto[0]);
-//         }
-
-//         modelPedido.carregarFormaPagamento(idFormaPagamento, function(error, metodoPagamento){
-//             modelPedido.atualizarFormaPagamentoPedido(idFormaPagamento, idPedido, function(error, result){
-//                 res.render(link, {produtos: produto, carrinho: carrinho, valorTotal:valorFinal, formaPagamento: metodoPagamento})
-//             })
-//         })
-//     })
-// }
