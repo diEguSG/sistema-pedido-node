@@ -9,21 +9,7 @@
 <body>
     
     <main>
-        <%if(erros){%>
-            <ul>
-                <%for(let i = 0; i < erros.length; i++){%>
-                    <li><%=erros[i].msg%></li>
-                <%}%>
-            </ul>
-        <%}%>    
-
-        <%if(erro){%>
-            <ul>
-                <%for(let i = 0; i < erro.length; i++){%>
-                    <li><%=erro[0].msg%></li>
-                <%}%>
-            </ul>
-        <%}%>    
+            
     
         <form action="/usuario/cadastrar" method="post">
             
@@ -38,6 +24,22 @@
                 
                 <input type="hidden" name="tipoUsuario" value="1">
             </div>
+
+            <%if(erros){%>
+                <ul>
+                    <%for(let i = 0; i < erros.length; i++){%>
+                        <li><%=erros[i].msg%></li>
+                    <%}%>
+                </ul>
+            <%}%>    
+    
+            <%if(erro){%>
+                <ul>
+                    <%for(let i = 0; i < erro.length; i++){%>
+                        <li><%=erro[0].msg%></li>
+                    <%}%>
+                </ul>
+            <%}%>
 
             <div id="info-cad">
                 <p>Já possui um cadastro?</p>
