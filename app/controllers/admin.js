@@ -237,13 +237,14 @@ module.exports.edicaoProduto = async function(app, req, res){
     }
 
     const idProduto = req.params.idProduto;
+    let produto
 
     const connection = app.config.connection;
     const modelProduto = new app.app.models.modelProduto(connection);
 
-    modelProduto.carregarProduto(idProduto, function(error, result){
-        res.render('./admin/editarProduto', {produto: result, erros: {}});
-    })
+    produto = await modelProduto.carregarProduto(idProduto);
+
+    res.render('./admin/editarProduto', {produto: produto, erros: {}});
 }
 
 module.exports.editarProduto = function(app, req, res){

@@ -21,8 +21,10 @@
                 <tr>
                     <td><%=produto[i].descricao%></td>
                     <td>R$ <%=produto[i].preco%></td>
-                    <th><a href="/edicaoProduto/<%=produto[i].id%>"><button>Editar</button></a>
-                        <a href="/excluirProduto/<%=produto[i].id%>"><button>Excluir</button></a></th>
+                    <th>
+                        <a href="/edicaoProduto/<%=produto[i].id%>"><button>Editar</button></a>
+                        <a href="/excluirProduto/<%=produto[i].id%>"><button>Excluir</button></a>
+                    </th>
                 </tr>
             <%}%>
         </tr>
